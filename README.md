@@ -1,18 +1,27 @@
-# EUKK Trading 1.0.0
+# EUKK Trading 1.1.0
 
 한국·미국 시장의 데이터 준비, 종목 선별, 백테스트와 자동매매를 한곳에서 관리하는 로컬 데스크톱 프로그램입니다. Python과 PySide6로 만들었으며 별도 서버나 Python 설치 없이 실행할 수 있습니다.
 
-**[1.0.0 다운로드 및 변경 사항](https://github.com/OverDlive/AutoTrading_Local-releases/releases/tag/v1.0.0)** · **[최신 버전](https://github.com/OverDlive/AutoTrading_Local-releases/releases/latest)**
+**[1.1.0 다운로드 및 변경 사항](https://github.com/OverDlive/AutoTrading_Local-releases/releases/tag/v1.1.0)** · **[최신 버전](https://github.com/OverDlive/AutoTrading_Local-releases/releases/latest)**
 
 ## 다운로드
 
 | 운영체제 | 배포 파일 |
 | --- | --- |
-| Windows x64 | [EUKK-Trading-1.0.0-windows-x64.zip](https://github.com/OverDlive/AutoTrading_Local-releases/releases/download/v1.0.0/EUKK-Trading-1.0.0-windows-x64.zip) |
-| macOS Apple Silicon (M 시리즈) | [EUKK-Trading-1.0.0-macos-arm64.tar.gz](https://github.com/OverDlive/AutoTrading_Local-releases/releases/download/v1.0.0/EUKK-Trading-1.0.0-macos-arm64.tar.gz) |
-| macOS Intel | [EUKK-Trading-1.0.0-macos-x64.tar.gz](https://github.com/OverDlive/AutoTrading_Local-releases/releases/download/v1.0.0/EUKK-Trading-1.0.0-macos-x64.tar.gz) |
+| Windows x64 | [EUKK-Trading-1.1.0-windows-x64.zip](https://github.com/OverDlive/AutoTrading_Local-releases/releases/download/v1.1.0/EUKK-Trading-1.1.0-windows-x64.zip) |
+| macOS Apple Silicon (M 시리즈) | [EUKK-Trading-1.1.0-macos-arm64.tar.gz](https://github.com/OverDlive/AutoTrading_Local-releases/releases/download/v1.1.0/EUKK-Trading-1.1.0-macos-arm64.tar.gz) |
+| macOS Intel | [EUKK-Trading-1.1.0-macos-x64.tar.gz](https://github.com/OverDlive/AutoTrading_Local-releases/releases/download/v1.1.0/EUKK-Trading-1.1.0-macos-x64.tar.gz) |
 
 각 파일에 대응하는 `.sha256` 파일도 릴리스에 제공합니다. GitHub의 **Source code** 파일은 실행 프로그램이 아니므로 위의 운영체제별 파일을 받으세요. Linux 배포 파일은 제공하지 않습니다.
+
+## 1.1.0 변경 사항
+
+- 백테스트의 지수 핵심 v4 고정 적용과 기존 설정 전환, 시장별 핵심 ETF 선택 개선
+- 실시간 로컬 모의매매의 시세 연결·체결 처리와 시장별 운용 설정 개선
+- 백테스트 진행 표시·취소 응답, 대규모 결과의 메모리 사용과 분석 개선
+- 스크리닝 데이터 준비·검증과 계산 자원 관리 개선
+
+기존 설정이 지수 핵심 v4로 전환될 수 있으므로 실행 전 운용 방식과 핵심 ETF, 투자 비중을 확인하세요.
 
 ## 주요 기능
 
