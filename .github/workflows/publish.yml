@@ -1,0 +1,76 @@
+name: Publish verified desktop release
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing draft release tag (vX.Y.Z)
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-${{ inputs.tag }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.repository == 'OverDlive/AutoTrading_Local-releases'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Verify all platform archives and publish the draft
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.tag }}
+        run: |
+          python3 - <<'PY'
+          import hashlib
+          import json
+          import os
+          import re
+          import subprocess
+          import tempfile
+          from pathlib import Path
+
+          repo = os.environ["GITHUB_REPOSITORY"]
+          tag = os.environ["RELEASE_TAG"]
+          if not re.fullmatch(r"v[0-9]+\.[0-9]+\.[0-9]+", tag):
+              raise ValueError("Expected a stable vX.Y.Z tag")
+
+          def gh(*args):
+              return subprocess.check_output(["gh", *args, "--repo", repo], text=True)
+
+          release = json.loads(gh("release", "view", tag, "--json",
+                                  "tagName,isDraft,isPrerelease,assets"))
+          if release["tagName"] != tag or not release["isDraft"] or release["isPrerelease"]:
+              raise ValueError("Only an existing stable draft can be published")
+          archives = [f"EUKK-Trading-{tag[1:]}-{suffix}" for suffix in (
+              "windows-x64.zip", "macos-arm64.tar.gz", "macos-x64.tar.gz")]
+          expected = {name for archive in archives for name in (archive, archive + ".sha256")}
+          assets = release["assets"]
+          if len(assets) != 6 or {asset["name"] for asset in assets} != expected:
+              raise ValueError("Exactly three archives and their checksums are required")
+          for asset in assets:
+              limit = 1024 if asset["name"].endswith(".sha256") else 2 * 1024**3
+              if not 0 < asset["size"] <= limit:
+                  raise ValueError("Invalid asset size")
+          with tempfile.TemporaryDirectory() as directory:
+              gh("release", "download", tag, "--dir", directory)
+              root = Path(directory)
+              for asset in assets:
+                  path = root / asset["name"]
+                  with path.open("rb") as stream:
+                      digest = hashlib.file_digest(stream, "sha256").hexdigest()
+                  if path.stat().st_size != asset["size"] or asset["digest"] != "sha256:" + digest:
+                      raise ValueError("GitHub asset integrity mismatch")
+                  if asset["name"] in archives:
+                      checksum = root / (asset["name"] + ".sha256")
+                      if checksum.read_text().split() != [digest, asset["name"]]:
+                          raise ValueError("Archive checksum mismatch")
+                  print("Verified", asset["name"], flush=True)
+              gh("release", "edit", tag, "--draft=false", "--latest")
+              print("Published", tag, flush=True)
+          PY
