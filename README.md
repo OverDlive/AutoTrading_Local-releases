@@ -71,7 +71,7 @@ KRX 계정만으로 증권사 주문이나 모든 실시간 시세 기능을 이
 
 - Mac은 **Apple 메뉴 → 이 Mac에 관하여**에서 칩 또는 프로세서를 확인합니다.
 - Windows는 **설정 → 시스템 → 정보 → 시스템 종류**에서 x64 여부를 확인합니다. Windows ARM 전용 배포판은 제공하지 않습니다.
-- **Source code (zip/tar.gz)**는 실행 프로그램이 아닙니다.
+- <strong>Source code (zip/tar.gz)</strong>는 실행 프로그램이 아닙니다.
 - `.sha256`는 파일이 손상되지 않았는지 확인할 때 사용하는 체크섬 파일이며 실행 파일이 아닙니다.
 - Linux·스마트폰용 설치 파일은 제공하지 않습니다.
 
@@ -166,7 +166,7 @@ KIS Developers 포털의 로그인 비밀번호, 증권사 고객 ID 비밀번�
 
 ### 4-4. 앱에 입력하기
 
-**Account & Data → 실전 계좌 (PROD) 또는 모의 계좌 (VTS)**에서 다음을 입력합니다.
+<strong>Account & Data → 실전 계좌 (PROD) 또는 모의 계좌 (VTS)</strong>에서 다음을 입력합니다.
 
 | 앱 입력칸 | 입력 내용 | 흔한 실수 |
 | --- | --- | --- |
@@ -281,10 +281,10 @@ KRX 실제 로그인 화면은 SNS 가입자가 아이디/비밀번호 로그인
 한국투자만 사용한다면 이 절은 건너뛰어도 됩니다. 토스 계정은 KIS PROD/VTS 설정과 별개입니다.
 
 1. [토스증권 공식 Open API 가이드](https://developers.tossinvest.com/docs)의 **시작하기**를 확인합니다.
-2. 토스증권 **WTS(웹 트레이딩 서비스)**에 본인 계정으로 로그인합니다.
+2. 토스증권 <strong>WTS(웹 트레이딩 서비스)</strong>에 본인 계정으로 로그인합니다.
 3. **설정 → Open API**에서 클라이언트를 등록하고 **Client ID / Client Secret**을 발급받습니다.
 4. 같은 화면의 **허용 IP 관리**에 앱을 실행할 PC가 사용하는 **공인 IP**를 등록합니다. `192.168.x.x` 같은 공유기 내부 주소와 혼동하지 마세요. 네트워크·VPN 변경 후에는 외부에 보이는 IP가 달라질 수 있습니다.
-5. API용 **계좌 ID(accountSeq)**를 확인합니다. 일반 계좌번호와 다른 값입니다. 화면에서 찾을 수 없다면 [공식 Account 안내](https://developers.tossinvest.com/docs/account)의 계좌 목록 조회 안내나 토스 지원 경로를 이용하세요. 특정 숫자로 추측하지 마세요.
+5. API용 <strong>계좌 ID(accountSeq)</strong>를 확인합니다. 일반 계좌번호와 다른 값입니다. 화면에서 찾을 수 없다면 [공식 Account 안내](https://developers.tossinvest.com/docs/account)의 계좌 목록 조회 안내나 토스 지원 경로를 이용하세요. 특정 숫자로 추측하지 마세요.
 6. 앱의 **Account & Data → 토스증권 · 실계좌 (REAL)** 카드에 세 값을 입력합니다.
 7. **안전하게 저장 → 연결 테스트**를 누릅니다.
 8. 마지막 확인 시각과 KRW·USD 가용현금 또는 오류를 확인합니다. 조회 실패를 잔액 0원으로 해석하지 마세요.
