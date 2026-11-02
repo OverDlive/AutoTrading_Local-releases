@@ -37,19 +37,26 @@
 | 항목 | 최소 사양 — 소규모 조회·단일 백테스트 | 권장 사양 — 백테스트·스크리닝·다른 작업 병행 |
 | --- | --- | --- |
 | Windows | Windows 10 1809 이상, 64비트 x64¹ | Windows 11, 64비트 x64 |
-| CPU | 64비트 4코어 이상 | 64비트 8코어 이상, 단일 코어 성능이 좋은 CPU |
+| Intel CPU | **Core i3-10100**(10세대, 4코어/8스레드) 동급 이상 | **Core i5-13400**(13세대, 6P+4E코어/16스레드) 동급 이상 |
+| AMD CPU | **Ryzen 5 3600**(6코어/12스레드) 동급 이상 | **Ryzen 7 5700X**(8코어/16스레드) 동급 이상 |
 | 메모리 | RAM 8GB | RAM 16GB 이상, 다종목·장기간·동시 계산은 32GB 이상 |
 | 저장장치 | SSD 여유 공간 10GB 이상 | SSD/NVMe 여유 공간 30GB 이상 |
 | 화면 | 1280 × 800 이상, 배율 적용 후 사용 가능한 작업 영역 1080 × 720 이상 | 1920 × 1080 이상 |
-| 그래픽 | 내장 그래픽 사용 가능 | 일반 사용에 별도 GPU 불필요 |
+| GPU — 화면 표시·CPU 계산 | **Intel UHD Graphics 630** 동급 내장 그래픽 또는 화면 출력용 외장 그래픽 | **Intel UHD Graphics 730** 등 내장 그래픽 사용 가능, 일반 사용에 고성능 외장 GPU 불필요 |
 | 네트워크 | 데이터 다운로드·증권사 연결·업데이트 시 인터넷 필요 | 실시간 운용 시 안정적인 상시 연결 |
 | 실행 환경 | 설치형 배포판은 Python 별도 설치 불필요 | 소스 실행·개발 시 Python 3.11.x와 프로젝트 의존성 필요 |
 
 ¹ Windows 버전 하한은 [Qt 6.11의 지원 플랫폼](https://doc.qt.io/qt-6.11/supported-platforms.html)을 참고한 호환성 기준이며, 해당 Windows 버전에서 앱 전체를 검증했다는 뜻은 아닙니다. Windows ARM 전용 설치 파일은 제공하지 않습니다.
 
 - **macOS:** Apple Silicon과 Intel용 배포 파일을 각각 제공합니다. 메모리·저장공간·화면 가이드는 동일하게 참고하되, Windows CPU 표기를 Mac 모델에 직접 대응시키지는 마세요. 설치형 앱의 최저 macOS 버전과 저사양 Mac 성능은 **미확인**이며, 사용할 릴리스의 안내를 확인하세요.
-- **대규모 백테스트:** 8코어·RAM 32GB·SSD를 우선 권장합니다. 최소 사양에서는 종목 수·기간·동시 실행 수를 줄여 사용하세요. 데이터 캐시·백테스트 결과·자동 백업이 누적되므로 표의 여유 공간보다 더 필요할 수 있습니다.
-- **GPU:** 기본 계산은 CPU로 실행됩니다. 선택적 NVIDIA/CUDA 가속은 지원 환경에서만 사용하는 실험적 기능이며, 최소·권장 사양의 필수 조건이 아닙니다.
+- **대규모 백테스트:** 위 권장 CPU급에 RAM 32GB·SSD를 우선 권장합니다. 최소 사양에서는 종목 수·기간·동시 실행 수를 줄여 사용하세요. 데이터 캐시·백테스트 결과·자동 백업이 누적되므로 표의 여유 공간보다 더 필요할 수 있습니다.
+- **CPU 모델 해석:** 위 모델은 데스크톱 기준의 추정 성능 예시입니다. Intel/AMD 중 하나를 충족하면 되며, 두 브랜드 모델의 성능이 정확히 같다는 뜻은 아닙니다. 단순히 “Core i5 이상”, “Ryzen 5 이상”으로 판단하지 말고 세대·전체 모델명을 확인하세요. 노트북 U/H/HX 모델은 전력·냉각에 따라 지속 성능이 달라 별도 비교가 필요합니다.
+- **그래픽 출력 확인:** Ryzen 5 3600과 Ryzen 7 5700X에는 내장 그래픽이 없으므로 화면 출력용 외장 그래픽이 필요합니다. Intel도 F/KF 모델은 별도 그래픽이 필요하므로 내장 그래픽이 있는 일반 모델과 구분하세요. 이 화면 출력 요구와 CUDA 계산 가속은 별개입니다.
+- **GPU — 선택적 CUDA 계산 가속:** Windows의 NVIDIA 외장 GPU와 호환 드라이버, GPU 기능을 포함한 앱 빌드가 필요합니다. 보유 장비의 검토 예시는 **GeForce RTX 3060 12GB**이며, 이 모델에서의 앱 호환성·성능은 **미확인**입니다. 현재 실물 검증 기록이 있는 모델은 **GeForce RTX 5070 Ti 16GB**입니다. 지원되는 최저 GPU 모델·VRAM 용량은 아직 확정하지 않았으며, 모델 번호가 높다고 자동으로 호환성을 보장하지 않습니다. AMD Radeon·Intel Arc·Apple GPU용 계산 가속 경로는 현재 제공하지 않으며 CPU 경로를 사용합니다.
+- **GPU 선택 기준:** CUDA는 기본값이 꺼진 실험적 선택 기능입니다. 2026-09-12의 RTX 5070 Ti 전체 선별 실험에서도 CPU 대비 유의미한 속도 개선을 확인하지 못했습니다. 이 앱만을 위해 고가 GPU를 구매하기보다 CPU·RAM·SSD를 우선하세요. 위 RTX 모델은 필수 구매 사양이 아닙니다.
+
+모델의 코어·스레드·내장 그래픽·메모리 정보는 제조사 사양을 참고했습니다. **앱의 최소/권장 등급은 별도의 추정 가이드**입니다: [Intel i3-10100](https://www.intel.com/content/www/us/en/products/sku/199283/intel-core-i310100-processor-6m-cache-up-to-4-30-ghz/specifications.html), [Intel i5-13400](https://www.intel.com/content/www/us/en/products/sku/230495/intel-core-i513400-processor-20m-cache-up-to-4-60-ghz/specifications.html), [AMD Ryzen 5 3600](https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-3000-series/amd-ryzen-5-3600.html), [AMD Ryzen 7 5700X](https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-5000-series/amd-ryzen-7-5700x.html), [NVIDIA RTX 3060 제품군](https://www.nvidia.com/en-us/geforce/graphics-cards/30-series/rtx-3060-3060ti/).
+
 - **검증 범위:** 2026-11-02 개발 소스에서 Windows build 10.0.26300, 물리 8코어/논리 16스레드, 메모리 약 32GB, Python 3.11.9, Qt 6.11.2 환경으로 오프라인 백테스트·동시 계산 응답성을 측정했습니다. 모든 PC·실계좌 운용·공개 배포판에서 같은 성능을 보장하는 자료는 아닙니다.
 
 ### 계정과 키는 용도가 다릅니다
