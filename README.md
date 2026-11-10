@@ -2,9 +2,9 @@
 
 한국·미국 주식의 데이터 준비, 종목 선별, 백테스트, 자동매매를 관리하는 **PC용 프로그램**입니다. Windows 또는 macOS에 설치해 사용하며 Python 설치나 프로그래밍 지식은 필요하지 않습니다.
 
-**[최신 버전 다운로드](https://github.com/OverDlive/AutoTrading_Local-releases/releases/latest)** · **[v1.7.0 배포 내역](https://github.com/OverDlive/AutoTrading_Local-releases/releases/tag/v1.7.0)** · **[문제 해결](#troubleshooting)**
+**[최신 버전 다운로드](https://github.com/OverDlive/AutoTrading_Local-releases/releases/latest)** · **[v1.9.0 배포 내역](https://github.com/OverDlive/AutoTrading_Local-releases/releases/tag/v1.9.0)** · **[문제 해결](#troubleshooting)**
 
-> 설명 기준: **공개 배포판 v1.7.0**, 공식 사이트 확인·화면 촬영: **2026-09-28**. 사이트 메뉴와 제공 조건은 변경될 수 있습니다. 로그인 이후 본인 인증·발급·비밀번호 변경 완료 화면은 개인 계정으로 직접 확인하지 않았으며, 해당 구간은 공식 안내와 화면 지시에 따라 진행하도록 적었습니다.
+> 설명 기준: **공개 배포판 v1.9.0**, 공식 사이트 확인·화면 촬영: **2026-09-28**. 사이트 메뉴와 제공 조건은 변경될 수 있습니다. 로그인 이후 본인 인증·발급·비밀번호 변경 완료 화면은 개인 계정으로 직접 확인하지 않았으며, 해당 구간은 공식 안내와 화면 지시에 따라 진행하도록 적었습니다.
 >
 > 처음에는 **데이터 준비 → 백테스트 → 모의투자** 순서로 사용하세요. 실계좌 모드는 실제 돈으로 주문할 수 있습니다. 백테스트 수익률과 모의 체결은 실제 수익·체결을 보장하지 않습니다.
 
@@ -90,13 +90,13 @@ KRX 계정만으로 증권사 주문이나 모든 실시간 시세 기능을 이
 
 ### 2-1. 어떤 파일을 받아야 하나요?
 
-[최신 릴리스](https://github.com/OverDlive/AutoTrading_Local-releases/releases/latest)를 열고 **Assets** 목록을 펼칩니다. 아래는 v1.7.0의 파일입니다. 새 버전에서는 파일명의 버전 숫자가 달라집니다.
+[최신 릴리스](https://github.com/OverDlive/AutoTrading_Local-releases/releases/latest)를 열고 **Assets** 목록을 펼칩니다. 아래는 v1.9.0의 파일입니다. 새 버전에서는 파일명의 버전 숫자가 달라집니다.
 
 | PC | 파일 |
 | --- | --- |
-| Windows x64 | [EUKK-Trading-1.7.0-windows-x64.zip](https://github.com/OverDlive/AutoTrading_Local-releases/releases/download/v1.7.0/EUKK-Trading-1.7.0-windows-x64.zip) |
-| M1·M2 등 Apple Silicon Mac | [EUKK-Trading-1.7.0-macos-arm64.tar.gz](https://github.com/OverDlive/AutoTrading_Local-releases/releases/download/v1.7.0/EUKK-Trading-1.7.0-macos-arm64.tar.gz) |
-| Intel Mac | [EUKK-Trading-1.7.0-macos-x64.tar.gz](https://github.com/OverDlive/AutoTrading_Local-releases/releases/download/v1.7.0/EUKK-Trading-1.7.0-macos-x64.tar.gz) |
+| Windows x64 | [EUKK-Trading-1.9.0-windows-x64.zip](https://github.com/OverDlive/AutoTrading_Local-releases/releases/download/v1.9.0/EUKK-Trading-1.9.0-windows-x64.zip) |
+| M1·M2 등 Apple Silicon Mac | [EUKK-Trading-1.9.0-macos-arm64.tar.gz](https://github.com/OverDlive/AutoTrading_Local-releases/releases/download/v1.9.0/EUKK-Trading-1.9.0-macos-arm64.tar.gz) |
+| Intel Mac | [EUKK-Trading-1.9.0-macos-x64.tar.gz](https://github.com/OverDlive/AutoTrading_Local-releases/releases/download/v1.9.0/EUKK-Trading-1.9.0-macos-x64.tar.gz) |
 
 - Mac은 **Apple 메뉴 → 이 Mac에 관하여**에서 칩 또는 프로세서를 확인합니다.
 - Windows는 **설정 → 시스템 → 정보 → 시스템 종류**에서 x64 여부를 확인합니다. Windows ARM 전용 배포판은 제공하지 않습니다.
@@ -128,13 +128,13 @@ KRX 계정만으로 증권사 주문이나 모든 실시간 시세 기능을 이
 Windows PowerShell:
 
 ```powershell
-Get-FileHash "$HOME\Downloads\EUKK-Trading-1.7.0-windows-x64.zip" -Algorithm SHA256
+Get-FileHash "$HOME\Downloads\EUKK-Trading-1.9.0-windows-x64.zip" -Algorithm SHA256
 ```
 
 macOS 터미널:
 
 ```bash
-shasum -a 256 "$HOME/Downloads/EUKK-Trading-1.7.0-macos-arm64.tar.gz"
+shasum -a 256 "$HOME/Downloads/EUKK-Trading-1.9.0-macos-arm64.tar.gz"
 ```
 
 <a id="screens"></a>
@@ -189,7 +189,7 @@ KIS Developers 포털의 로그인 비밀번호, 증권사 고객 ID 비밀번�
 2. 발급된 모의투자 계좌와 이용 기간을 확인합니다.
 3. Open API 신청에서 **모의투자용** 계좌를 대상으로 키를 발급받습니다.
 4. 모의투자용 키·계좌는 앱의 **모의 계좌 (VTS)** 카드에 입력합니다. PROD 키를 복사해 넣지 마세요.
-5. VTS 연결에 성공해도 실시간 시세를 위한 PROD 연결이 추가로 필요할 수 있습니다. 이 앱 v1.7.0의 한투 VTS 세션은 한투 PROD 시세 연결을 사용합니다. [모의매매 안내](#paper)를 함께 읽으세요.
+5. VTS 연결에 성공해도 실시간 시세를 위한 PROD 연결이 추가로 필요할 수 있습니다. 이 앱 v1.9.0의 한투 VTS 세션은 한투 PROD 시세 연결을 사용합니다. [모의매매 안내](#paper)를 함께 읽으세요.
 
 모의계좌 만료와 API 키의 유효기간은 같은 개념이 아닙니다. 모의 주문 불가 오류가 발생하면 증권사에서 모의계좌 유효 상태부터 확인하세요.
 
@@ -403,7 +403,7 @@ FMP는 모든 사용자에게 필수인 증권사 주문 API가 아닙니다. �
 
 ### 11-1. 세 가지 모드를 구분하세요
 
-| 방식 | 주문·체결을 처리하는 곳 | 실제 자금 | v1.7.0 시세 연결 |
+| 방식 | 주문·체결을 처리하는 곳 | 실제 자금 | v1.9.0 시세 연결 |
 | --- | --- | --- | --- |
 | 로컬 모의 | 앱 내부 시뮬레이션 | 사용하지 않음 | 한투 PROD 또는 토스 연결 |
 | 한국투자 VTS | 한국투자 모의투자 서버 | 모의 자금 | 한투 PROD 연결 사용 |
@@ -606,6 +606,22 @@ Windows는 파일 탐색기 주소 표시줄에 경로를 붙여넣습니다. ma
 - [FMP 공식 문서](https://site.financialmodelingprep.com/developer/docs): 데이터 종류·API 키·조회 권한 확인.
 
 문서의 웹 화면은 공개 페이지의 **실제 캡처**입니다. 예시 계좌번호는 형식 설명용 가상 값이며, 실사용자의 계정이나 키는 포함하지 않았습니다. 사이트 화면·상표의 권리는 각 운영사에 있습니다. 가입·신청 조건과 인증 요구사항은 해당 공식 사이트가 우선합니다.
+
+## 1.9.0 변경 사항
+
+- 개별주 운용과 시나리오 전략의 선택지를 추가하고 선별·백테스트 설정을 개선했습니다. 단독 일목과 시장 국면 필터의 분리 동작은 유지됩니다.
+- 저장된 백테스트 결과 불러오기, 진행 표시와 데스크톱 성능 설정을 개선했습니다.
+- 연결 세션의 macOS 자동 절전을 방지하고, 복구 후 최신 계좌 상태를 확인해 미처리 확정봉을 재평가합니다. 놓친 시가의 주문을 뒤늦게 전송하지 않습니다.
+
+### v1.8.0 후보에서 포함된 변경 사항
+
+- 공통 일목 계산의 이동 규약을 원점 포함 26봉(인덱스 차 25칸)으로 정정하고, 준비구성·정확한 P역삼존 조기 진입·시간 후보와 차트 근거 표시를 연결했습니다. 이전 버전과 판단·거래 결과가 달라질 수 있습니다.
+- 개별주 일목 선택 모드를 백테스트·선별·실시간 시작에 추가했습니다. ETF를 제외한 적격 일반주를 평가하며 N분할 배분 상한과 주 1회 제한 교체를 공통 정책으로 처리합니다. 기본 설정으로 자동 전환하지 않습니다.
+- 단독 일목의 외부 시장 필터 분리와 국면 통합 전략의 시장 필터를 유지합니다. 일목 기반 국면 분류, 현금 활용, 박스 반등·1봉 재평가는 선택형 연구 설정이며 보편적인 수익 우위는 미확인입니다.
+- 단독 돈치안 인버스의 기본 수량 정책은 설정한 투자 예산을 사용합니다. 이전 소액 위험 방식은 별도로 선택할 수 있고, 통합 전략의 기존 정책은 유지합니다. 투자 비중 확대는 손실도 확대할 수 있습니다.
+- 전략 판단·배분·진입 가격 재검사를 공통 실행 경로에 연결하고, 신규 설정과 판단 근거를 화면에 반영했습니다.
+
+기존 세션과 저장된 이동값을 새 전략 버전으로 자동 이식하지 않습니다. 기존 세션을 안전 정지한 뒤 새 버전의 전략·투자 비율·위험 설정을 확인하세요. 연구 결과는 실계좌 체결 성과가 아니며, 이번 배포 검증에서도 실제 증권사 주문은 실행하지 않습니다.
 
 ## 1.7.0 변경 사항
 
