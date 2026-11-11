@@ -48,11 +48,12 @@ jobs:
           if release["tagName"] != tag or not release["isDraft"] or release["isPrerelease"]:
               raise ValueError("Only an existing stable draft can be published")
           archives = [f"EUKK-Trading-{tag[1:]}-{suffix}" for suffix in (
-              "windows-x64.zip", "macos-arm64.tar.gz", "macos-x64.tar.gz")]
+              "windows-x64.zip", "macos-arm64.tar.gz", "macos-x64.tar.gz",
+              "windows-x64-setup.exe", "macos-arm64-setup.pkg", "macos-x64-setup.pkg")]
           expected = {name for archive in archives for name in (archive, archive + ".sha256")}
           assets = release["assets"]
-          if len(assets) != 6 or {asset["name"] for asset in assets} != expected:
-              raise ValueError("Exactly three archives and their checksums are required")
+          if len(assets) != 12 or {asset["name"] for asset in assets} != expected:
+              raise ValueError("Exactly three installers, three update archives and their checksums are required")
           for asset in assets:
               limit = 1024 if asset["name"].endswith(".sha256") else 2 * 1024**3
               if not 0 < asset["size"] <= limit:
